@@ -1,0 +1,37 @@
+{
+  "name": "node-express-mysql-groceryshopping",
+  "version": "1.0.0",
+  "description": "A full stack web app for your grocery shopping needs. Keep track of who's supposed to buy what and whether they did it or not.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test this"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpdevspace/Node-Express-MySQL-GroceryShopping.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "MySQL",
+    "SQL",
+    "Handlebars",
+    "Grocery",
+    "Shopping",
+    "Full",
+    "Stack"
+  ],
+  "author": "Jean Paul Giraldo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpdevspace/Node-Express-MySQL-GroceryShopping/issues"
+  },
+  "homepage": "https://github.com/jpdevspace/Node-Express-MySQL-GroceryShopping#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7"
+  }
+}
