@@ -1,6 +1,25 @@
-/* body {
-    font-family: 'Delius Swash Caps', cursive;
-} */
+.container > .card {
+    margin-top: 2em;
+}
+
+#message {
+    font-size: 34px;
+    font-family: 'Sacramento', cursive;
+    display: none;
+    position: fixed;
+    background-color: #0ea731;
+    z-index: 2;
+    right: 10px;
+    top: 0;
+    border-bottom: 8px solid #012b0c;
+    border-radius: 0px 0px 5px 5px;
+    color: #FFF;
+    padding: 0.1rem 0.6em;
+}
+
+#message.show {
+    display: block;
+}
 
 #main-title {
     width: 100%;

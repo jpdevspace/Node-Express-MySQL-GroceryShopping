@@ -6,7 +6,7 @@
         <h5 class="card-title text-center">Instructions</h5>
         <p class="card-text">Create a grocery shopping list and assign the item to someone in your hosehold. You can update your records when
             the item has been purchased</p>
-        <form action="/wish" method="POST">
+        <form action="/products" method="POST">
             <div class="form-group">
                 <label for="item">Item name</label>
                 <input name="item" type="text" class="form-control" id="item" placeholder="I'm running out of...">
@@ -22,40 +22,38 @@
     </div>
 </div>
 <br />
-<div class="list-group">
-    <a href="#" class="text-center list-group-item list-group-item-action active bg-danger">
+<div id="pending" class="list-group">
+    <a href="#" class="text-center text-white list-group-item list-group-item-action bg-danger">
         Pending
     </a>
     {{#each itemPending}}
 
         <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
             <div>
-                <strong>Id:</strong> {{this.id}} ||
                 <strong>Product:</strong> {{this.item}} ||
                 <strong>Who:</strong> {{this.person}}
             </div>
             <div>
-                <i class="fa fa-check" aria-hidden="true"></i>
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa fa-check" aria-hidden="true" data-mapid="{{this.id}}"></i>
+                <i class="fa fa-times" aria-hidden="true" data-mapid="{{this.id}}"></i>
             </div>
         </a>
 
     {{/each}}
 </div>
 <br />
-<div class="list-group">
-    <a href="#" class="text-center list-group-item list-group-item-action active bg-info">
+<div id="completed" class="list-group">
+    <a href="#" class="text-center text-white list-group-item list-group-item-action bg-info">
         Completed
     </a>
     {{#each itemComplete}}
         <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
             <div>
-                <strong>Id:</strong> {{this.id}} ||
                 <strong>Product:</strong> {{this.item}} ||
                 <strong>Who:</strong> {{this.person}}
             </div>
             <div>
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true" data-mapid="{{this.id}}"></i>
             </div>
         </a>
     {{/each}}
