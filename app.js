@@ -1,8 +1,8 @@
 // Requiring modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes'); // Routing Setup
 const exphbs  = require('express-handlebars');
+const routes = require('./routes'); // Routing Setup
 
 // Using Port 3000 or whatever the default port for the environment is
 const port = process.env.PORT || 3000;
@@ -14,6 +14,9 @@ const app = express();
 // Middleware: Express-Handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+// Middleware: Folder to serve static files from
+app.use(express.static('public'));
 
 // Midleware: Imported Routes setup
 app.use('/', routes);

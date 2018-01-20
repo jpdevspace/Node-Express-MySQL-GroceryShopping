@@ -3,12 +3,7 @@ const connection = require('./connection.js'); // MySQL Connection
 
 // Function to display all the data in db
 const selectAll = () => {
-    let sql = "SELECT * FROM shopping_table";
 
-    connection.query(sql, (err, dataDB) => {
-        if (err) throw err;
-        console.log(dataDB);
-    });
 };
 
 // Function to insert new items into db
@@ -41,10 +36,10 @@ const removeOne = (id) => {
     });
 }
 
-module.exports = {
-    selectAll: selectAll,
-    insertOne: insertOne,
-    updateOne: updateOne,
-    removeOne: removeOne
-}
+// module.exports = {
+//     selectAll: selectAll,
+//     insertOne: insertOne,
+//     updateOne: updateOne,
+//     removeOne: removeOne
+// }
 
