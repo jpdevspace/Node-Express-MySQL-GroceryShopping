@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
     database: "shopping_db" 
 });
 
+// Start MySQL connection
 connection.connect( err => {
     if (err) {
         console.error(err);

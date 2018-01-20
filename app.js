@@ -1,12 +1,11 @@
 // Requiring modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const routes = require('./routes'); // Routing Setup
 const exphbs  = require('express-handlebars');
-const orm = require('./config/orm.js');
 
 // Using Port 3000 or whatever the default port for the environment is
 const port = process.env.PORT || 3000;
-
 
 // Initializing Express app
 const app = express();
@@ -16,14 +15,9 @@ const app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+// Midleware: Imported Routes setup
+app.use('/', routes);
 
-const test = 'Indeed I am working!!!'
-
-// GET - Home Route
-app.get('/', (req, res) => {
-    console.log(orm.selectAll());
-    res.render('index', { test });
-});
 
 // Starting Express Server
 app.listen(port, () => {
