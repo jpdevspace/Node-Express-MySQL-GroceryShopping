@@ -1,9 +1,7 @@
 // Requiring modules
 const express = require('express');
 const bodyParser = require('body-parser');
-//const mysql = require('mysql');
 const exphbs  = require('express-handlebars');
-//const connection = require('./config/connection.js'); // MySQL Connection
 const orm = require('./config/orm.js');
 
 // Using Port 3000 or whatever the default port for the environment is
@@ -23,7 +21,7 @@ const test = 'Indeed I am working!!!'
 
 // GET - Home Route
 app.get('/', (req, res) => {
-    console.log(orm());
+    console.log(orm.selectAll());
     res.render('index', { test });
 });
 
