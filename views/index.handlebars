@@ -27,16 +27,37 @@
         Pending
     </a>
     {{#each itemPending}}
-        <a href="#" class="list-group-item list-group-item-action"><strong>Id:</strong> {{this.id}} || <strong>Product:</strong> {{this.item}} || <strong>Who:</strong> {{this.person}}</a>
+
+        <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
+            <div>
+                <strong>Id:</strong> {{this.id}} ||
+                <strong>Product:</strong> {{this.item}} ||
+                <strong>Who:</strong> {{this.person}}
+            </div>
+            <div>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </a>
+
     {{/each}}
 </div>
-<br /> 
+<br />
 <div class="list-group">
     <a href="#" class="text-center list-group-item list-group-item-action active bg-info">
         Completed
     </a>
     {{#each itemComplete}}
-        <a href="#" class="list-group-item list-group-item-action"><strong>Id:</strong> {{this.id}} || <strong>Product:</strong> {{this.item}} || <strong>Who:</strong> {{this.person}}</a>
+        <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
+            <div>
+                <strong>Id:</strong> {{this.id}} ||
+                <strong>Product:</strong> {{this.item}} ||
+                <strong>Who:</strong> {{this.person}}
+            </div>
+            <div>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </a>
     {{/each}}
 </div>
 <br />
