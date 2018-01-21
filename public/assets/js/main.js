@@ -26,7 +26,7 @@
      
                 $.ajax({
                     type: 'DELETE',
-                    url: `/delete/${$itemId}`,
+                    url: `/delete/${$itemId}`,  // $.ajax DELETE methods can't send data on body
                     success: response => {
                         this.customMessage("Item removed");
                         location.reload();  // Reloads the page. So Handlebars rerenders the view to include updated db

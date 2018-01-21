@@ -36,6 +36,10 @@
     text-shadow: 2px 2px 1px #06AD32;
 }
 
+#completed > a.bg-info {
+    background-color: #0ea731 !important;
+}
+
 footer {
     margin-top: 1em;
     padding: 1em;
