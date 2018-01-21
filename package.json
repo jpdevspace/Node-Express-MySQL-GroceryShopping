@@ -4,7 +4,8 @@
   "description": "A full stack web app for your grocery shopping needs. Keep track of who's supposed to buy what and whether they did it or not.",
   "main": "app.js",
   "scripts": {
-    "test": "test this"
+    "test": "test this",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
