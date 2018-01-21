@@ -1,7 +1,7 @@
 # Node-Express-MySQL-GroceryShopping
 A full stack web app with persisting data for your grocery shopping needs. Keep track of who's supposed to buy what and whether they did it or not. All items will be stored in a MySQL Database. You can update their status when you buy the product or remove them.
 
-## See it live on: 
+## See it live on: https://infinite-chamber-66272.herokuapp.com/
 
 ![alt text][screenshot]
 
