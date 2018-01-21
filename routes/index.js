@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../config/connection.js'); // MySQL Connection
-//const orm = require('../config/orm.js'); // MySQL CRUD functions 
 
-
-const test = 'Indeed I am working!!!';
 
 // GET - Home Route
 router.get('/', (req, res) => {
@@ -28,12 +25,9 @@ router.get('/', (req, res) => {
     });
 });
 
-// POST - Products route
+// POST - Products route: Creates items into the DB
 router.post('/products', (req, res) => {
-    let item = req.body.item;
-    let person = req.body.person;
-
-    let sql = `INSERT INTO shopping_table (item, person) VALUES ("${item}", "${person}")`;
+    let sql = `INSERT INTO shopping_table (item, person) VALUES ("${req.body.item}", "${req.body.person}")`;
 
     connection.query(sql, (err, dataDB) => {
         if (err) throw err;
@@ -41,15 +35,25 @@ router.post('/products', (req, res) => {
     });
 });
 
-router.post('/complete', (req, res) => {
-    let sql = `DELETE FROM shopping_table WHERE id = ${req.body.itemId}`;
-
-    connection.query(sql, (err, dataDB) => {
-        if (err) throw err;
-        res.redirect('/');
-    });
-
+// DELETE - /Complete route: Delete items from DB
+router.delete('/delete/:id', (req, res) => {
     
+    let sql = `DELETE FROM shopping_table WHERE id = ${req.params.id}`;
+
+    connection.query(sql, (err, dataDB) => {
+        if (err) throw err;
+        res.send('OK');
+    });
 });
+
+router.post('/purchased', (req, res) => {
+
+    let sql = `UPDATE shopping_table SET purchased = 1 WHERE id = ${req.body.itemId}`;
+
+    connection.query(sql, (err, dataDB) => {
+        if (err) throw err;
+        res.redirect('/');
+    });
+})
 
 module.exports = router;

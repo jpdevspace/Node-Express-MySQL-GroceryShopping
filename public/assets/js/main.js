@@ -1,44 +1,69 @@
 +function($) {
     $(function() {
         const shoppingList = {
-            init() {
+            init () {
                 this.domCache();
                 this.eventBinding();
             },
-            domCache() {
+            domCache () {
                 this.$pending = $('#pending');
                 this.$completed = $('#completed');
                 this.$message = $('#message');
+                this.$btnSubmit = $('#btnSubmit');
             },
-            eventBinding() {
+            eventBinding () {
                 this.$pending.on('click', 'i.fa-times', this.removeItem.bind(this));
                 this.$completed.on('click', 'i.fa-times', this.removeItem.bind(this));
                 this.$pending.on('click', "i.fa-check", this.purchased.bind(this));
+                this.$btnSubmit.on('click', this.addItem.bind(this));
             },
-            removeItem(e) {
+            addItem () {
+                this.customMessage("Item added");
+            },
+            removeItem (e) {
                 e.preventDefault();
                 const $itemId = $(e.target).attr('data-mapid');
      
                 $.ajax({
-                    type: 'POST',
-                    url: '/complete',
-                    data: { itemId: $itemId },
+                    type: 'DELETE',
+                    url: `/delete/${$itemId}`,
                     success: response => {
-                        // Remove element from DOM
-                        $(e.target).closest('a.list-group-item').remove();
-                        // Alert the user
-                        this.$message.text("Item removed");
-                        this.$message.addClass("show");
-                        // Hide the alert
-                        setTimeout(this.hideMessage.bind(this), 2000);
+                        this.customMessage("Item removed");
+                        location.reload();  // Reloads the page. So Handlebars rerenders the view to include updated db
+                    },
+                    error: () => {
+                        alert('There was an error with your request, please try again');
                     }
                 });
             },
-            hideMessage() {
+            purchased (e) {
+                e.preventDefault();
+                const $itemId = $(e.target).attr('data-mapid');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/purchased',
+                    data: { itemId: $itemId },
+                    success: response => {
+                        this.customMessage("Item purchased");
+                        location.reload();  // Reloads the page. So Handlebars rerenders the view to include updated db
+                    },
+                    error: () => {
+                        alert('There was an error with your request, please try again');
+                    }
+                });
+            },
+            customMessage (msg) {
+                // Alert the user
+                this.$message.text(msg);
+                this.$message.addClass("show");
+                // Hide the alert
+                setTimeout(this.hideMessage.bind(this), 2000);
+            },
+            hideMessage () {
                 this.$message.removeClass("show");
             }
         }
-
         shoppingList.init();
     });
 }(jQuery)
